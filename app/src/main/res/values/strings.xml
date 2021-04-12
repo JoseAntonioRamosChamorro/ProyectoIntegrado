@@ -1,0 +1,79 @@
+<resources>
+    <string name="app_name">ProyectoIntegrado</string>
+    //Inicio
+    <string name="tituloInicio">Inicio</string>
+    <string name="nombre">Insertar Nombre</string>
+    <string name="btnIniciar">Iniciar</string>
+    //Final
+    <string name="tituloFin">Resultado</string>
+    <string name="nombreFin">Nombre</string>
+    <string name="puntosFin">Puntuación</string>
+    <string name="btnReiniciar">Reiniciar</string>
+    <string name="btnSubir">Subir</string>
+
+    //Preguntas
+    //quiz 1
+    <string name="question">Pregunta</string>
+    <string name="check">Siguiente</string>
+    //Lista 1
+    <string name="Listapreguntas1">¿En cual contenedor se tiran los plásticos?</string>
+    <array name="preguntas1">
+        <item>Verde</item>
+        <item>Gris</item>
+        <item>Amarillo</item>
+        <item>Azul</item>
+    </array>
+    <integer name="respuestacorrecta1">2</integer>
+
+    //quiz 2
+    <string name="question2">Pregunta</string>
+    <string name="check2">Siguiente</string>
+    //Lista 2
+    <string name="Listapreguntas2">¿En cual contenedor se tiran los cristales?</string>
+    <array name="preguntas2">
+        <item>Verde</item>
+        <item>Gris</item>
+        <item>Amarillo</item>
+        <item>Azul</item>
+    </array>
+    <integer name="respuestacorrecta2">0</integer>
+
+    //quiz 3
+    <string name="question3">Pregunta</string>
+    <string name="check3">Siguiente</string>
+    //Lista 3
+    <string name="Listapreguntas3">¿En cual contenedor se tiran los papeles?</string>
+    <array name="preguntas3">
+        <item>Verde</item>
+        <item>Azul</item>
+        <item>Amarillo</item>
+        <item>Gris</item>
+    </array>
+    <integer name="respuestacorrecta3">1</integer>
+
+    //quiz 4
+    <string name="question4">Pregunta</string>
+    <string name="check4">Siguiente</string>
+    //Lista 4
+    <string name="Listapreguntas4">¿En cual contenedor se tiran las pilas?</string>
+    <array name="preguntas4">
+        <item>Verde</item>
+        <item>Gris</item>
+        <item>Amarillo</item>
+        <item>Contedor especial</item>
+    </array>
+    <integer name="respuestacorrecta4">3</integer>
+
+    //quiz 5
+    <string name="question5">Pregunta</string>
+    <string name="check5">Terminar</string>
+    //Lista 5
+    <string name="Listapreguntas5">¿Al usar el lavavajillas?</string>
+    <array name="preguntas5">
+        <item>Hay que sobrecargarlo</item>
+        <item>Hay que ponerlo con poca carga</item>
+        <item>Hay que ponerlo cuando este lleno</item>
+        <item>Hay que prelavarlos</item>
+    </array>
+    <integer name="respuestacorrecta5">2</integer>
+</resources>
