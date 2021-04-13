@@ -4,6 +4,7 @@
     <string name="tituloInicio">Inicio</string>
     <string name="nombre">Insertar Nombre</string>
     <string name="btnIniciar">Iniciar</string>
+    <string name="btnRanking">Ranking</string>
     //Final
     <string name="tituloFin">Resultado</string>
     <string name="nombreFin">Nombre</string>

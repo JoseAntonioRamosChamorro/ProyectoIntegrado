@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.io.BufferedWriter;
 import java.io.OutputStream;
@@ -104,6 +105,7 @@ public class Final extends AppCompatActivity {
 
         // Inspectores
         protected void onPreExecute() {
+            Toast.makeText(Final.this, "Subiendo datos...", Toast.LENGTH_SHORT).show();
         }
 
         protected String doInBackground(Void... argumentos) {
@@ -132,10 +134,10 @@ public class Final extends AppCompatActivity {
                     myConnection.disconnect();
                 } else {
                     // Error handling code goes here
-                    Log.println(Log.ASSERT, "Error", "Error");
+                    Log.println(Log.ASSERT, "Error2", "Error");
                 }
             } catch (Exception e) {
-                Log.println(Log.ASSERT, "Excepción", e.getMessage());
+                Log.println(Log.ASSERT, "Excepción1", e.getMessage());
             }
             return (null);
         }
