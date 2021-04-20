@@ -22,12 +22,13 @@ import java.util.ArrayList;
 
 public class Ranking extends AppCompatActivity {
     //modificar en caso de que cambie la ip del equipo
-    String ip = "192.168.1.105";
+    String ip = "192.168.1.107";
     //cambiar entre documentos de php
     String prim = "usuarios.php";
     //cambiar campos
     String id = "idusuario";
     String campo = "nombreUsuario";
+    String campo2 = "puntuacionUsuario";
     JSONArray result;
     JSONObject jsonobject;
 
@@ -37,7 +38,7 @@ public class Ranking extends AppCompatActivity {
     ArrayAdapter<String> adapter;
     ConsultaRemota acceso;
     int posicion;
-    String idIdioma, nombreIdioma;
+    String idUsuario, nombreUsuario, puntuacionusu;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,7 +58,7 @@ public class Ranking extends AppCompatActivity {
 
     }
 
-    // Consulta idioma
+    // Consulta
     private class ConsultaRemota extends AsyncTask<Void, Void, String> {
         // Constructor
         public ConsultaRemota() {
@@ -95,17 +96,20 @@ public class Ranking extends AppCompatActivity {
                     posicion = 0;
                     jsonobject = result.getJSONObject(posicion);
                     // Sacamos dato a dato obtenido
-                    idIdioma = jsonobject.getString(id);
-                    nombreIdioma = jsonobject.getString(campo);
+                    idUsuario = jsonobject.getString(id);
+                    nombreUsuario = jsonobject.getString(campo);
+                    puntuacionusu = jsonobject.getString(campo2);
                     responseBody.close();
                     responseBodyReader.close();
                     myConnection.disconnect();
                 } else {
+
                     // Error en la conexión
+
                     Log.println(Log.ERROR, "Error2", "¡Conexión fallida!");
                 }
             } catch (Exception e) {
-                Log.println(Log.ERROR, "Error1", e.getMessage());
+                Log.println(Log.ERROR, "Error1", e.getMessage()+ "Conexion fallida 2");
             }
             return (null);
         }
@@ -118,7 +122,7 @@ public class Ranking extends AppCompatActivity {
                     int longitud = result.length();
                     for (int i = 0; i < longitud; i++) {
                         jsonobject = result.getJSONObject(i);
-                        rank.add(jsonobject.getString(id) + "  -  " + jsonobject.getString(campo));
+                        rank.add(jsonobject.getString(id) + "  -  " + jsonobject.getString(campo)+">" +jsonobject.getString(campo2));
                         adapter.notifyDataSetChanged();
                     }
                 }
