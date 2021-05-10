@@ -30,7 +30,7 @@ public class Final extends AppCompatActivity {
     AltaRemota alta;
 
     //modificar en caso de que cambie la ip del equipo
-    String ip = "192.168.1.107";
+    String ip = "192.168.1.108";
     //cambiar entre documentos de php
     String prim = "usuarios.php";
     String campo ="nombreUsuario";

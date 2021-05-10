@@ -2,10 +2,13 @@ package com.example.proyectointegrado;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -22,11 +25,11 @@ import java.util.ArrayList;
 
 public class Ranking extends AppCompatActivity {
     //modificar en caso de que cambie la ip del equipo
-    String ip = "192.168.1.107";
+    String ip = "192.168.1.108";
     //cambiar entre documentos de php
-    String prim = "usuarios.php";
+    String php1 = "usuarios.php";
+    String php2 = "usuarios2.php";
     //cambiar campos
-    String id = "idusuario";
     String campo = "nombreUsuario";
     String campo2 = "puntuacionUsuario";
     JSONArray result;
@@ -37,8 +40,11 @@ public class Ranking extends AppCompatActivity {
     ArrayList<String> rank;
     ArrayAdapter<String> adapter;
     ConsultaRemota acceso;
+    ConsultaRemota2 acceso2;
     int posicion;
-    String idUsuario, nombreUsuario, puntuacionusu;
+    String nombreUsuario, puntuacionusu;
+
+    Button btnRankVolver, btnRankSolo5, btnTodo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +61,34 @@ public class Ranking extends AppCompatActivity {
 
         acceso = new ConsultaRemota();
         acceso.execute();
+        //botones
+        btnRankSolo5 = findViewById(R.id.btnRankSolo5);
+        btnRankSolo5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                acceso2 = new ConsultaRemota2();
+                acceso2.execute();
+            }
+        });
+
+        btnTodo = findViewById(R.id.btnTodo);
+        btnTodo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                acceso = new ConsultaRemota();
+                acceso.execute();
+            }
+        });
+        btnRankVolver = findViewById(R.id.btnRankVolver);
+        btnRankVolver.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent1 = new Intent(Ranking.this, MainActivity.class);
+                startActivity(intent1);
+                finish();
+            }
+        });
+
 
     }
 
@@ -65,14 +99,13 @@ public class Ranking extends AppCompatActivity {
         }
 
         // Inspectores
-        protected void onPreExecute() {
-            Toast.makeText(Ranking.this, "Obteniendo datos...", Toast.LENGTH_SHORT).show();
+        protected void onPreExecute() { ;
         }
 
         protected String doInBackground(Void... argumentos) {
             try {
                 // Crear la URL de conexión al API
-                URL url = new URL("http://" + ip + "/ApiRest/" + prim);
+                URL url = new URL("http://" + ip + "/ApiRest/" + php1);
                 // Crear la conexión HTTP
                 HttpURLConnection myConnection = (HttpURLConnection) url.openConnection();
                 // Establecer método de comunicación.
@@ -96,7 +129,6 @@ public class Ranking extends AppCompatActivity {
                     posicion = 0;
                     jsonobject = result.getJSONObject(posicion);
                     // Sacamos dato a dato obtenido
-                    idUsuario = jsonobject.getString(id);
                     nombreUsuario = jsonobject.getString(campo);
                     puntuacionusu = jsonobject.getString(campo2);
                     responseBody.close();
@@ -109,7 +141,7 @@ public class Ranking extends AppCompatActivity {
                     Log.println(Log.ERROR, "Error2", "¡Conexión fallida!");
                 }
             } catch (Exception e) {
-                Log.println(Log.ERROR, "Error1", e.getMessage()+ "Conexion fallida 2");
+                Log.println(Log.ERROR, "Error1", e.getMessage() + ">Conexion fallida 2");
             }
             return (null);
         }
@@ -122,7 +154,7 @@ public class Ranking extends AppCompatActivity {
                     int longitud = result.length();
                     for (int i = 0; i < longitud; i++) {
                         jsonobject = result.getJSONObject(i);
-                        rank.add(jsonobject.getString(id) + "  -  " + jsonobject.getString(campo)+">" +jsonobject.getString(campo2));
+                        rank.add(jsonobject.getString(campo) + ": puntuación->" + jsonobject.getString(campo2));
                         adapter.notifyDataSetChanged();
                     }
                 }
@@ -130,6 +162,78 @@ public class Ranking extends AppCompatActivity {
                 e.printStackTrace();
             }
         }
-    }
 
+    }
+    // Consulta
+    private class ConsultaRemota2 extends AsyncTask<Void, Void, String> {
+        // Constructor
+        public ConsultaRemota2() {
+        }
+
+        // Inspectores
+        protected void onPreExecute() {
+        }
+
+        protected String doInBackground(Void... argumentos) {
+            try {
+                // Crear la URL de conexión al API
+                URL url = new URL("http://" + ip + "/ApiRest/" + php2);
+                // Crear la conexión HTTP
+                HttpURLConnection myConnection = (HttpURLConnection) url.openConnection();
+                // Establecer método de comunicación.
+                myConnection.setRequestMethod("GET");
+                if (myConnection.getResponseCode() == 200) {
+                    // Conexión exitosa
+                    // Creamos Stream para la lectura de datos desde el servidor
+                    InputStream responseBody = myConnection.getInputStream();
+                    InputStreamReader responseBodyReader = new InputStreamReader(responseBody, "UTF-8");
+                    // Creamos Buffer de lectura
+                    BufferedReader bR = new BufferedReader(responseBodyReader);
+                    String line = "";
+                    StringBuilder responseStrBuilder = new StringBuilder();
+                    // Leemos el flujo de entrada
+                    while ((line = bR.readLine()) != null) {
+                        responseStrBuilder.append(line);
+                    }
+                    // Parseamos respuesta en formato JSON
+                    result = new JSONArray(responseStrBuilder.toString());
+                    // Nos quedamos solamente con la primera
+                    posicion = 0;
+                    jsonobject = result.getJSONObject(posicion);
+                    // Sacamos dato a dato obtenido
+                    nombreUsuario = jsonobject.getString(campo);
+                    puntuacionusu = jsonobject.getString(campo2);
+                    responseBody.close();
+                    responseBodyReader.close();
+                    myConnection.disconnect();
+                } else {
+
+                    // Error en la conexión
+
+                    Log.println(Log.ERROR, "Error2", "¡Conexión fallida!");
+                }
+            } catch (Exception e) {
+                Log.println(Log.ERROR, "Error1", e.getMessage() + ">Conexion fallida 2");
+            }
+            return (null);
+        }
+
+        protected void onPostExecute(String mensaje) {
+            // Añado los idiomas obtenidos a la lista
+            try {
+                rank.clear();
+                if (result != null) {
+                    int longitud = result.length();
+                    for (int i = 0; i < longitud; i++) {
+                        jsonobject = result.getJSONObject(i);
+                        rank.add(jsonobject.getString(campo) + ": puntuación->" + jsonobject.getString(campo2));
+                        adapter.notifyDataSetChanged();
+                    }
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+
+    }
 }

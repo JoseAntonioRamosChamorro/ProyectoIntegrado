@@ -9,9 +9,12 @@
     <string name="tituloFin">Resultado</string>
     <string name="nombreFin">Nombre</string>
     <string name="puntosFin">Puntuación</string>
-    <string name="btnReiniciar">Reiniciar</string>
+    <string name="btnReiniciar">Volver</string>
     <string name="btnSubir">Subir</string>
-
+    //Ranking
+    <string name="btnRankVolver">Volver</string>
+    <string name="btnRankSolo5">Notas maximas</string>
+    <string name="btnTodo">Todas las notas</string>
     //Preguntas
     //quiz 1
     <string name="question">Pregunta</string>
