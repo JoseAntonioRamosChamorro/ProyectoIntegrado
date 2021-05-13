@@ -55,10 +55,7 @@ public class Quest1 extends AppCompatActivity {
                 //comprobar respuesta correcta
                 if (answer == correct_answer) {
                     nota = nota + 1;
-
                 }
-
-
                 Intent intent1 = new Intent(Quest1.this, Quest2.class);
                 intent1.putExtra("nombreUsu", name);
                 intent1.putExtra("notaUsu", nota);

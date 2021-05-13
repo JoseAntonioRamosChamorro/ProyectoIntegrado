@@ -20,9 +20,9 @@
 
     <TextView
         android:id="@+id/tituloFin"
-        android:layout_width="135dp"
-        android:layout_height="59dp"
-        android:text="@string/tituloInicio"
+        android:layout_width="197dp"
+        android:layout_height="64dp"
+        android:text="@string/tituloFin"
         android:textAlignment="center"
         android:textSize="36sp"
         app:layout_constraintBottom_toBottomOf="parent"

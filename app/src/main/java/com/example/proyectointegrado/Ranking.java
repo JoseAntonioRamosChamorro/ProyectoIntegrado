@@ -50,7 +50,6 @@ public class Ranking extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ranking);
-
         //crear ranking
         listaranking = findViewById(R.id.listaRanking);
         rank = new ArrayList<>();
@@ -62,14 +61,6 @@ public class Ranking extends AppCompatActivity {
         acceso = new ConsultaRemota();
         acceso.execute();
         //botones
-        btnRankSolo5 = findViewById(R.id.btnRankSolo5);
-        btnRankSolo5.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                acceso2 = new ConsultaRemota2();
-                acceso2.execute();
-            }
-        });
 
         btnTodo = findViewById(R.id.btnTodo);
         btnTodo.setOnClickListener(new View.OnClickListener() {
@@ -79,6 +70,17 @@ public class Ranking extends AppCompatActivity {
                 acceso.execute();
             }
         });
+
+        btnRankSolo5 = findViewById(R.id.btnRankSolo5);
+        btnRankSolo5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                acceso2 = new ConsultaRemota2();
+                acceso2.execute();
+            }
+        });
+
+
         btnRankVolver = findViewById(R.id.btnRankVolver);
         btnRankVolver.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -135,9 +137,7 @@ public class Ranking extends AppCompatActivity {
                     responseBodyReader.close();
                     myConnection.disconnect();
                 } else {
-
                     // Error en la conexión
-
                     Log.println(Log.ERROR, "Error2", "¡Conexión fallida!");
                 }
             } catch (Exception e) {
@@ -164,7 +164,7 @@ public class Ranking extends AppCompatActivity {
         }
 
     }
-    // Consulta
+    // Consulta 2
     private class ConsultaRemota2 extends AsyncTask<Void, Void, String> {
         // Constructor
         public ConsultaRemota2() {
