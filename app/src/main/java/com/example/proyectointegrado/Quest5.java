@@ -19,13 +19,10 @@ public class Quest5 extends AppCompatActivity {
     };
     String name;
     int nota;
-
-
-    //aceso a la BD
-
-    JSONArray result;
-    JSONObject jsonobject;
-
+    Button volver;
+    @Override
+    public void onBackPressed() {
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -74,6 +71,15 @@ public class Quest5 extends AppCompatActivity {
                 startActivity(intent1);
             }
 
+        });
+        volver = findViewById(R.id.volver5);
+        volver.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent1 = new Intent(Quest5.this, MainActivity.class);
+                startActivity(intent1);
+                finish();
+            }
         });
     }
 }

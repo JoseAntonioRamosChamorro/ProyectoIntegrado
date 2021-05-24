@@ -19,6 +19,7 @@
     //quiz 1
     <string name="question">Pregunta 1</string>
     <string name="check">Siguiente</string>
+    <string name="volver1">Volver</string>
     //Lista 1
     <string name="Listapreguntas1">¿En cual contenedor se tiran los plásticos?</string>
     <array name="preguntas1">

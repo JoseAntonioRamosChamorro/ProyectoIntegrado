@@ -16,6 +16,10 @@ public class Quest3 extends AppCompatActivity {
     };
     String name;
     int nota;
+    Button volver;
+    @Override
+    public void onBackPressed() {
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,6 +66,15 @@ public class Quest3 extends AppCompatActivity {
                 intent1.putExtra("notaUsu", nota);
 
                 startActivity(intent1);
+            }
+        });
+        volver = findViewById(R.id.volver3);
+        volver.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent1 = new Intent(Quest3.this, MainActivity.class);
+                startActivity(intent1);
+                finish();
             }
         });
     }

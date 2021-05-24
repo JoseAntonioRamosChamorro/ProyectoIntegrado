@@ -16,7 +16,10 @@ public class Quest1 extends AppCompatActivity {
     };
     String name;
     int nota;
-
+    Button volver;
+    @Override
+    public void onBackPressed() {
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,6 +39,8 @@ public class Quest1 extends AppCompatActivity {
             RadioButton rb = (RadioButton) findViewById(ids_answers[i]);
             rb.setText(answers[i]);
         }
+
+
 
         final int correct_answer = getResources().getInteger(R.integer.respuestacorrecta1);
         final RadioGroup group = (RadioGroup) findViewById(R.id.answer_group);
@@ -64,5 +69,16 @@ public class Quest1 extends AppCompatActivity {
 
             }
         });
+
+        volver = findViewById(R.id.volver);
+        volver.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent1 = new Intent(Quest1.this, MainActivity.class);
+                startActivity(intent1);
+                finish();
+            }
+        });
+
     }
 }

@@ -29,14 +29,11 @@ public class MainActivity extends AppCompatActivity {
                 name = edNombre.getText().toString();
                 if (name.equals("")){
                     Toast.makeText(getApplicationContext(), "Escriba su nombre", Toast.LENGTH_SHORT).show();
-
                 }else {
                     Intent nombre = new Intent(MainActivity.this, Quest1.class);
                     nombre.putExtra("nombreUsu", name);
                     startActivity(nombre);
                 }
-
-
             }
         });
         btnRanking.setOnClickListener(new View.OnClickListener() {
