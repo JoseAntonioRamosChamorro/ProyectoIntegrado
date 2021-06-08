@@ -10,12 +10,9 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
-import android.widget.Toast;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -25,7 +22,7 @@ import java.util.ArrayList;
 
 public class Ranking extends AppCompatActivity {
     //modificar en caso de que cambie la ip del equipo
-    String ip = "192.168.1.108";
+    String ip = "192.168.1.106";
     //cambiar entre documentos de php
     String php1 = "usuarios.php";
     String php2 = "usuarios2.php";
@@ -80,7 +77,6 @@ public class Ranking extends AppCompatActivity {
             }
         });
 
-
         btnRankVolver = findViewById(R.id.btnRankVolver);
         btnRankVolver.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -90,8 +86,6 @@ public class Ranking extends AppCompatActivity {
                 finish();
             }
         });
-
-
     }
 
     // Consulta
@@ -162,18 +156,15 @@ public class Ranking extends AppCompatActivity {
                 e.printStackTrace();
             }
         }
-
     }
     // Consulta 2
     private class ConsultaRemota2 extends AsyncTask<Void, Void, String> {
         // Constructor
         public ConsultaRemota2() {
         }
-
         // Inspectores
         protected void onPreExecute() {
         }
-
         protected String doInBackground(Void... argumentos) {
             try {
                 // Crear la URL de conexión al API
@@ -207,9 +198,7 @@ public class Ranking extends AppCompatActivity {
                     responseBodyReader.close();
                     myConnection.disconnect();
                 } else {
-
                     // Error en la conexión
-
                     Log.println(Log.ERROR, "Error2", "¡Conexión fallida!");
                 }
             } catch (Exception e) {
@@ -234,6 +223,5 @@ public class Ranking extends AppCompatActivity {
                 e.printStackTrace();
             }
         }
-
     }
 }

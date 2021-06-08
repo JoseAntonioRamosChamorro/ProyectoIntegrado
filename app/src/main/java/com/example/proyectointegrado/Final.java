@@ -30,7 +30,7 @@ public class Final extends AppCompatActivity {
     AltaRemota alta;
 
     //modificar en caso de que cambie la ip del equipo
-    String ip = "192.168.1.108";
+    String ip = "192.168.1.106";
     //cambiar entre documentos de php
     String prim = "usuarios.php";
     String campo ="nombreUsuario";
@@ -71,7 +71,6 @@ public class Final extends AppCompatActivity {
         nombre.setText(name);
         puntos.setText(nota + "");
 
-
         //botones
         reiniciar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -87,6 +86,9 @@ public class Final extends AppCompatActivity {
             public void onClick(View v) {
                 alta = new AltaRemota(nombre.getText().toString(), puntos.getText().toString());
                 alta.execute();
+                Intent intent1 = new Intent(Final.this, MainActivity.class);
+                startActivity(intent1);
+                finish();
 
             }
         });
@@ -96,18 +98,15 @@ public class Final extends AppCompatActivity {
         // Atributos
         String nombre;
         String puntosusu;
-
         // Constructor
         public AltaRemota(String nombre, String puntos) {
             this.nombre = nombre;
             this.puntosusu = puntos;
         }
-
         // Inspectores
         protected void onPreExecute() {
             Toast.makeText(Final.this, "Subiendo datos...", Toast.LENGTH_SHORT).show();
         }
-
         protected String doInBackground(Void... argumentos) {
             try {
                 // Crear la URL de conexión al API
@@ -141,10 +140,8 @@ public class Final extends AppCompatActivity {
             }
             return (null);
         }
-
         protected void onPostExecute(String mensaje) {
         }
-
         private String getPostDataString(HashMap<String, String> params) throws UnsupportedEncodingException {
             StringBuilder result = new StringBuilder();
             boolean first = true;
@@ -159,6 +156,4 @@ public class Final extends AppCompatActivity {
                 result.append(URLEncoder.encode(entry.getValue(), "UTF-8"));
             }
             return result.toString();
-        }
-    }
-}
+        }}}

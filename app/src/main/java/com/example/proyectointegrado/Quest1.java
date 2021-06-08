@@ -29,18 +29,14 @@ public class Quest1 extends AppCompatActivity {
         Bundle bundle = intent.getExtras();
         name = bundle.getString("nombreUsu");
 
-
         TextView text_question = (TextView) findViewById(R.id.text_question);
         text_question.setText(R.string.Listapreguntas1);
-
         String[] answers = getResources().getStringArray(R.array.preguntas1);
 
         for (int i = 0; i < ids_answers.length; i++) {
             RadioButton rb = (RadioButton) findViewById(ids_answers[i]);
             rb.setText(answers[i]);
         }
-
-
 
         final int correct_answer = getResources().getInteger(R.integer.respuestacorrecta1);
         final RadioGroup group = (RadioGroup) findViewById(R.id.answer_group);
@@ -49,7 +45,6 @@ public class Quest1 extends AppCompatActivity {
         btn_check.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 int id = group.getCheckedRadioButtonId();
                 int answer = -1;
                 for (int i = 0; i < ids_answers.length; i++) {
@@ -66,7 +61,6 @@ public class Quest1 extends AppCompatActivity {
                 intent1.putExtra("notaUsu", nota);
 
                 startActivity(intent1);
-
             }
         });
 
@@ -79,6 +73,5 @@ public class Quest1 extends AppCompatActivity {
                 finish();
             }
         });
-
     }
 }

@@ -17,9 +17,11 @@ public class Quest2 extends AppCompatActivity {
     String name;
     int nota;
     Button volver;
+
     @Override
     public void onBackPressed() {
     }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,15 +62,10 @@ public class Quest2 extends AppCompatActivity {
                 if (answer == correct_answer) {
                     nota = nota + 1;
                 }
-
-
                 Intent intent1 = new Intent(Quest2.this, Quest3.class);
                 intent1.putExtra("nombreUsu", name);
                 intent1.putExtra("notaUsu", nota);
-
                 startActivity(intent1);
-
-
             }
         });
         volver = findViewById(R.id.volver2);
