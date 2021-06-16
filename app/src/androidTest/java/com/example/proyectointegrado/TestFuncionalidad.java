@@ -30,13 +30,53 @@ import static org.hamcrest.Matchers.is;
 
 @LargeTest
 @RunWith(AndroidJUnit4.class)
-public class TestCompleto {
+public class TestFuncionalidad {
 
     @Rule
     public ActivityTestRule<MainActivity> mActivityTestRule = new ActivityTestRule<>(MainActivity.class);
 
     @Test
-    public void testCompleto() {
+    public void testFuncionalidad() {
+        ViewInteraction materialButton = onView(
+                allOf(withId(R.id.btnRanking), withText("Ranking"),
+                        childAtPosition(
+                                childAtPosition(
+                                        withId(android.R.id.content),
+                                        0),
+                                4),
+                        isDisplayed()));
+        materialButton.perform(click());
+
+        ViewInteraction materialButton2 = onView(
+                allOf(withId(R.id.btnRankSolo5), withText("Notas maximas"),
+                        childAtPosition(
+                                childAtPosition(
+                                        withId(android.R.id.content),
+                                        0),
+                                0),
+                        isDisplayed()));
+        materialButton2.perform(click());
+
+        ViewInteraction materialButton3 = onView(
+                allOf(withId(R.id.btnTodo), withText("Todas las notas"),
+                        childAtPosition(
+                                childAtPosition(
+                                        withId(android.R.id.content),
+                                        0),
+                                1),
+                        isDisplayed()));
+        materialButton3.perform(click());
+
+        ViewInteraction materialButton4 = onView(
+                allOf(withId(R.id.btnRankVolver), withText("Volver"),
+                        childAtPosition(
+                                childAtPosition(
+                                        withId(android.R.id.content),
+                                        0),
+                                3),
+                        isDisplayed()));
+        materialButton4.perform(click());
+
         ViewInteraction appCompatEditText = onView(
                 allOf(withId(R.id.edTNombre),
                         childAtPosition(
@@ -45,39 +85,9 @@ public class TestCompleto {
                                         0),
                                 2),
                         isDisplayed()));
-        appCompatEditText.perform(replaceText("jos"), closeSoftKeyboard());
+        appCompatEditText.perform(replaceText("jose1"), closeSoftKeyboard());
 
-        ViewInteraction appCompatEditText2 = onView(
-                allOf(withId(R.id.edTNombre), withText("jos"),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(android.R.id.content),
-                                        0),
-                                2),
-                        isDisplayed()));
-        appCompatEditText2.perform(click());
-
-        ViewInteraction appCompatEditText3 = onView(
-                allOf(withId(R.id.edTNombre), withText("jos"),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(android.R.id.content),
-                                        0),
-                                2),
-                        isDisplayed()));
-        appCompatEditText3.perform(replaceText("jose"));
-
-        ViewInteraction appCompatEditText4 = onView(
-                allOf(withId(R.id.edTNombre), withText("jose"),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(android.R.id.content),
-                                        0),
-                                2),
-                        isDisplayed()));
-        appCompatEditText4.perform(closeSoftKeyboard());
-
-        ViewInteraction materialButton = onView(
+        ViewInteraction materialButton5 = onView(
                 allOf(withId(R.id.btnIniciar), withText("Iniciar"),
                         childAtPosition(
                                 childAtPosition(
@@ -85,20 +95,20 @@ public class TestCompleto {
                                         0),
                                 3),
                         isDisplayed()));
-        materialButton.perform(click());
+        materialButton5.perform(click());
 
         ViewInteraction materialRadioButton = onView(
-                allOf(withId(R.id.answer4), withText("Azul"),
+                allOf(withId(R.id.answer3), withText("Amarillo"),
                         childAtPosition(
                                 allOf(withId(R.id.answer_group),
                                         childAtPosition(
                                                 withClassName(is("android.widget.RelativeLayout")),
                                                 3)),
-                                3),
+                                2),
                         isDisplayed()));
         materialRadioButton.perform(click());
 
-        ViewInteraction materialButton2 = onView(
+        ViewInteraction materialButton6 = onView(
                 allOf(withId(R.id.btn_check5), withText("Siguiente"),
                         childAtPosition(
                                 childAtPosition(
@@ -106,7 +116,7 @@ public class TestCompleto {
                                         0),
                                 4),
                         isDisplayed()));
-        materialButton2.perform(click());
+        materialButton6.perform(click());
 
         ViewInteraction materialRadioButton2 = onView(
                 allOf(withId(R.id.answer2_3), withText("Amarillo"),
@@ -130,7 +140,7 @@ public class TestCompleto {
                         isDisplayed()));
         materialRadioButton3.perform(click());
 
-        ViewInteraction materialButton3 = onView(
+        ViewInteraction materialButton7 = onView(
                 allOf(withId(R.id.btn_check5), withText("Siguiente"),
                         childAtPosition(
                                 childAtPosition(
@@ -138,7 +148,7 @@ public class TestCompleto {
                                         0),
                                 5),
                         isDisplayed()));
-        materialButton3.perform(click());
+        materialButton7.perform(click());
 
         ViewInteraction materialRadioButton4 = onView(
                 allOf(withId(R.id.answer3_2), withText("Azul"),
@@ -151,7 +161,7 @@ public class TestCompleto {
                         isDisplayed()));
         materialRadioButton4.perform(click());
 
-        ViewInteraction materialButton4 = onView(
+        ViewInteraction materialButton8 = onView(
                 allOf(withId(R.id.btn_check5), withText("Siguiente"),
                         childAtPosition(
                                 childAtPosition(
@@ -159,7 +169,7 @@ public class TestCompleto {
                                         0),
                                 5),
                         isDisplayed()));
-        materialButton4.perform(click());
+        materialButton8.perform(click());
 
         ViewInteraction materialRadioButton5 = onView(
                 allOf(withId(R.id.answer4_4), withText("Contedor especial"),
@@ -172,7 +182,7 @@ public class TestCompleto {
                         isDisplayed()));
         materialRadioButton5.perform(click());
 
-        ViewInteraction materialButton5 = onView(
+        ViewInteraction materialButton9 = onView(
                 allOf(withId(R.id.btn_check5), withText("Siguiente"),
                         childAtPosition(
                                 childAtPosition(
@@ -180,7 +190,7 @@ public class TestCompleto {
                                         0),
                                 5),
                         isDisplayed()));
-        materialButton5.perform(click());
+        materialButton9.perform(click());
 
         ViewInteraction materialRadioButton6 = onView(
                 allOf(withId(R.id.answer5_3), withText("Hay que ponerlo cuando este lleno"),
@@ -193,7 +203,7 @@ public class TestCompleto {
                         isDisplayed()));
         materialRadioButton6.perform(click());
 
-        ViewInteraction materialButton6 = onView(
+        ViewInteraction materialButton10 = onView(
                 allOf(withId(R.id.btn_check5), withText("Terminar"),
                         childAtPosition(
                                 childAtPosition(
@@ -201,19 +211,9 @@ public class TestCompleto {
                                         0),
                                 5),
                         isDisplayed()));
-        materialButton6.perform(click());
+        materialButton10.perform(click());
 
-        ViewInteraction materialButton7 = onView(
-                allOf(withId(R.id.btnSubir), withText("Subir"),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(android.R.id.content),
-                                        0),
-                                6),
-                        isDisplayed()));
-        materialButton7.perform(click());
-
-        ViewInteraction materialButton8 = onView(
+        ViewInteraction materialButton11 = onView(
                 allOf(withId(R.id.btnReiniciar), withText("Volver"),
                         childAtPosition(
                                 childAtPosition(
@@ -221,47 +221,7 @@ public class TestCompleto {
                                         0),
                                 7),
                         isDisplayed()));
-        materialButton8.perform(click());
-
-        ViewInteraction materialButton9 = onView(
-                allOf(withId(R.id.btnRanking), withText("Ranking"),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(android.R.id.content),
-                                        0),
-                                4),
-                        isDisplayed()));
-        materialButton9.perform(click());
-
-        ViewInteraction materialButton10 = onView(
-                allOf(withId(R.id.btnRankSolo5), withText("Notas maximas"),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(android.R.id.content),
-                                        0),
-                                0),
-                        isDisplayed()));
-        materialButton10.perform(click());
-
-        ViewInteraction materialButton11 = onView(
-                allOf(withId(R.id.btnTodo), withText("Todas las notas"),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(android.R.id.content),
-                                        0),
-                                1),
-                        isDisplayed()));
         materialButton11.perform(click());
-
-        ViewInteraction materialButton12 = onView(
-                allOf(withId(R.id.btnRankVolver), withText("Volver"),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(android.R.id.content),
-                                        0),
-                                3),
-                        isDisplayed()));
-        materialButton12.perform(click());
     }
 
     private static Matcher<View> childAtPosition(
